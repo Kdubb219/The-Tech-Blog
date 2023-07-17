@@ -1,0 +1,7 @@
+{{#each posts}}
+  <div class="post">
+    <h2><a href="/posts/{{this.id}}">{{this.title}}</a></h2>
+    <p>{{this.content}}</p>
+    <p><em>Posted at {{this.createdAt}}</em></p>
+  </div>
+{{/each}}
