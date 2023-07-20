@@ -35,3 +35,7 @@ ul.blogmenu {
   .blogmenu li a:hover {
     background-color: #111111;
   }
+
+  button {
+    margin-top: 20px;
+    margin-bottom: 20px;}
