@@ -1,7 +1,11 @@
+{{#if posts.length}}
 {{#each posts}}
   <div class="post">
-    <h2><a href="/posts/{{this.id}}">{{this.title}}</a></h2>
-    <p>{{this.content}}</p>
-    <p><em>Posted at {{this.createdAt}}</em></p>
+    <h2><a href="/posts/{{this.dataValues.id}}">{{this.dataValues.title}}</a></h2>
+    <p>{{this.dataValues.content}}</p>
+    <p><em>Posted at {{this.dataValues.createdAt}}</em></p>
   </div>
 {{/each}}
+{{else}}
+  <div><p>No Posts At This Time</p></div>
+{{/if}}

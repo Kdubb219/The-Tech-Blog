@@ -2,18 +2,14 @@ const { Sequelize } = require('sequelize');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const sequelize = new Sequelize('techblog_db','root', 'password', {
-  host: 'localhost',
-  dialect: 'mysql'
-});
-
+const sequelize = require('../db/config.js');
 const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Import the models
-db.Post = require('./post')(sequelize, Sequelize);
+db.Post = require('./post');
 db.User = require('./user')(sequelize, Sequelize);
 
 // Create the session store

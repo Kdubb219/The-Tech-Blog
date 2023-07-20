@@ -1,7 +1,10 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
-module.exports = (sequelize) => {
-    const Post = sequelize.define('Post', {
+const sequelize = require('../db/config.js');
+
+class Post extends Model {}
+
+Post.init({
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -9,13 +12,24 @@ module.exports = (sequelize) => {
         content: {
             type: DataTypes.TEXT,
             allowNull: false
-        }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW // Set the default value to the current timestamp
+          },
+          updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+          }
     },
     {
-        timestamps: true, // Add timestamps (createdAt and updatedAt)
-        underscored: false // Use snake_case for column names (e.g., created_at)
-    });
-
-
-    return Post;
-};
+        sequelize,
+        timestamps: true,
+        freezeTableName: true,
+        underscored: false,
+        modelName: 'post',
+      });
+  
+  
+      module.exports = Post;
